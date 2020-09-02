@@ -1,0 +1,11 @@
+user:
+  handler: service.handler
+  events:
+    - http:
+        path: /user
+        method: ANY
+        cors: true
+    - http:
+        path: /graphql/user
+        method: ANY
+        cors: true

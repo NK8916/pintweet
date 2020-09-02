@@ -1,0 +1,27 @@
+{
+  "name": "pintweet",
+  "version": "1.0.0",
+  "description": "Display the posted tweets of the user",
+  "main": "handler.js",
+  "scripts": {
+    "start": "serverless offline start"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^6.5.0"
+  },
+  "dependencies": {
+    "@apollo/federation": "^0.19.1",
+    "@apollo/gateway": "^0.19.1",
+    "apollo-server-lambda": "^2.16.1",
+    "aws-sdk": "^2.744.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-playground-middleware-lambda": "^1.7.19",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.2"
+  }
+}

@@ -1,0 +1,11 @@
+tweet:
+  handler: service.handler
+  events:
+    - http:
+        path: /tweet
+        method: ANY
+        cors: true
+    - http:
+        path: /graphql/tweet
+        method: ANY
+        cors: true

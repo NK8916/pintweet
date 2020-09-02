@@ -1,0 +1,11 @@
+{
+  "name": "user",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service.js",
+  "scripts": {
+    "start": "serverless offline start"
+  },
+  "author": "",
+  "license": "ISC"
+}
