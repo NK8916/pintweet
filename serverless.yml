@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
-  region: us-east-1
+  region: localhost
 
 functions:
   - ${file(./main.yml)}
@@ -25,16 +25,24 @@ custom:
     start:
       port: 8000
       inMemory: true
+      migrate: true
 
 resources:
   Resources:
     usersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: usersTable
+        TableName: pintweet
         AttributeDefinitions:
           - AttributeName: username
+            AttributeType: S
+          - AttributeName: timestamp
             AttributeType: S
         KeySchema:
           - AttributeName: username
             KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

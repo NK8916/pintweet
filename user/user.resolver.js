@@ -1,46 +1,40 @@
 const { DynamoDB } = require("aws-sdk");
+const { DB_URL, DB_NAME } = require("../config/db.config.json");
 
 const params = {
   region: "localhost",
-  endpoint: "http://localhost:8000",
+  endpoint: DB_URL,
   accessKeyId: "local",
   secretAccessKey: "local",
 };
 
 const db = new DynamoDB(params);
 
-const mockedResponse = [
-  {
-    bookId: 1,
-    price: "29.99",
-    inStock: 215,
-  },
-  {
-    bookId: 2,
-    price: "19.99",
-    inStock: 45,
-  },
-];
 exports.resolvers = {
   Mutation: {
-    saveTweet: async (params) => {
+    saveTweet: async (_, Item) => {
       try {
-        return db.putItem(params);
+        console.log("utem", Item);
+        const params = {
+          TableName: DB_NAME,
+          Item: {
+            username: {
+              S: Item.username,
+            },
+            timestamp: {
+              S: `${Date.now()}`,
+            },
+            tweet: {
+              S: Item.tweet,
+            },
+          },
+        };
+        const result = await db.putItem(params).promise();
+
+        return result;
       } catch (err) {
         console.error(err);
       }
-    },
-  },
-  Query: {
-    stock() {
-      return mockedResponse;
-    },
-  },
-  Stock: {
-    __resolveReference(reference) {
-      return mockedResponse.find(
-        (x) => parseInt(x.bookId) === parseInt(reference.bookId)
-      );
     },
   },
 };

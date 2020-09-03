@@ -1,16 +1,16 @@
 const { gql } = require("apollo-server-lambda");
 
 exports.typeDefs = gql`
+  type Data {
+    S: String
+  }
+  type User {
+    username: Data
+    timestamp: Data
+    tweet: Data
+  }
+
   type Query {
-    library: [Book]
-  }
-  type Book @key(fields: "id") {
-    id: ID!
-    title: String
-    author: String
-    stock: Stock
-  }
-  extend type Stock @key(fields: "bookId") {
-    bookId: ID! @external
+    getTweet(username: String): [User]
   }
 `;
