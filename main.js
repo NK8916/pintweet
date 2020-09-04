@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const { ApolloServer } = require("apollo-server-lambda");
 const { ApolloGateway } = require("@apollo/gateway");
 
