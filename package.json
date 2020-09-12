@@ -7,7 +7,8 @@
     "start": "serverless offline start",
     "start:tweet": "npm start --prefix tweet",
     "start:user": "npm start --prefix user",
-    "start:dev": "concurrently --kill-others \"npm run start:user\" \"npm run start:tweet\" \"npm start\""
+    "start:client": "npm start --prefix client",
+    "start:dev": "concurrently --kill-others \"npm run start:user\" \"npm run start:tweet\" \"npm start\" \"npm run start:client\""
   },
   "author": "",
   "license": "ISC",
