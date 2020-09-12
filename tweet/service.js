@@ -10,12 +10,22 @@ const server = new ApolloServer({
 
 exports.handler = (event, context, callback) => {
   if (event.httpMethod === "GET") {
-    server.createHandler()(
+    server.createHandler({
+      cors: {
+        origin: "*",
+        credentials: true,
+      },
+    })(
       { ...event, path: event.requestContext.path || event.path },
       context,
       callback
     );
   } else {
-    server.createHandler()(event, context, callback);
+    server.createHandler({
+      cors: {
+        origin: "*",
+        credentials: true,
+      },
+    })(event, context, callback);
   }
 };

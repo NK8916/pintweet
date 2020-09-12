@@ -29,8 +29,8 @@ exports.resolvers = {
             },
           },
         };
-        await db.putItem(params).promise();
-
+        const result = await db.putItem(params).promise();
+        console.log(result);
         return Item;
       } catch (err) {
         console.error(err);

@@ -4,11 +4,15 @@
   "description": "Display the posted tweets of the user",
   "main": "handler.js",
   "scripts": {
-    "start": "serverless offline start"
+    "start": "serverless offline start",
+    "start:tweet": "npm start --prefix tweet",
+    "start:user": "npm start --prefix user",
+    "start:dev": "concurrently --kill-others \"npm run start:user\" \"npm run start:tweet\" \"npm start\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^6.5.0"
   },

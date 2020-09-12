@@ -1,0 +1,4 @@
+{
+  "TWEET_URI": "http://localhost:4002/dev/graphql/tweet",
+  "USER_URI": "http://localhost:4001/dev/graphql/user"
+}

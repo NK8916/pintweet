@@ -4,13 +4,14 @@ exports.typeDefs = gql`
   type Data {
     S: String
   }
-  type User {
+  type Tweet {
+    id: ID
     username: Data
     timestamp: Data
     tweet: Data
   }
 
   type Query {
-    getTweet(username: String): [User]
+    getTweet(username: String): [Tweet]!
   }
 `;

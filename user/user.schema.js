@@ -6,7 +6,8 @@ exports.typeDefs = gql`
     username: String
     tweet: String
   }
+
   type Mutation {
-    saveTweet(username: String, tweet: String): User
+    saveTweet(username: String!, tweet: String!): User
   }
 `;
